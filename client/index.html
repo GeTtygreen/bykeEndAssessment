@@ -29,14 +29,36 @@
       <br>
       <h5 >Simpson Quote to make you giggle</h5>
         <button id="simpsonbtn">Get &#x1f92b; Quote</button>
+        <p id='simpsonquote'></p>
+        <img src="" alt="simpsons character" id='simpsonpic'>
       
 
     </form>
     
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
-      const getBtn= document.getElementById("simpsonBtn")
-      getBtn.addEventListener('click',getData());
+        let quote = document.getElementById('simpsonquote')
+
+      let simpBtn = document.getElementById('simpsonbtn').onclick = function(){
+        axios.get('https://thesimpsonsquoteapi.glitch.me/quotes')
+        .then(response => {
+          console.log(response)
+          quote.innerHTML = response[0].quote.join
+        })
+      }
+      /// Displaying a image of the simpsons with quote 
+      fetch('https://thesimpsonsquoteapi.glitch.me/quotes')
+      .then(response =>{
+        console.log(response)
+        return response.blob()
+      })
+      .then(blob =>{
+        console.log(blob)
+        document.getElementById('simpsonpic').src = URL.createObjectURL
+      })
+
+      // const getBtn= document.getElementById("simpsonBtn")
+      // getBtn.addEventListener('click',getData());
 
      function thereItIs (){
        let color = document.getElementById('colorInputText').value;
