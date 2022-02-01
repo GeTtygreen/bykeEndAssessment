@@ -44,8 +44,11 @@
         axios.get('https://thesimpsonsquoteapi.glitch.me/quotes')
         .then(response => {
           console.log(response)
-          quote.innerHTML = response[0].quote.join
+          quote.innerHTML = response
         })
+      }
+      async function simpson(){
+        const response = await fetch('https://thesimpsonsquoteapi.glitch.me/quotes')
       }
       /// Displaying a image of the simpsons with quote 
       fetch('https://thesimpsonsquoteapi.glitch.me/quotes')
@@ -55,7 +58,11 @@
       })
       .then(blob =>{
         console.log(blob)
-        document.getElementById('simpsonpic').src = URL.createObjectURL
+        document.getElementById('simpsonpic').src = URL.createObjectURL(blob)
+      })
+      .catch(error =>{
+        console.log('DOH')
+        console.log(error)
       })
 
       // const getBtn= document.getElementById("simpsonBtn")
